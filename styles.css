@@ -1,0 +1,124 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ade80, #60a5fa);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    min-height: 100vh;
+    margin: 0;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    padding: 30px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 0 10px rgba(255,255,255,0.6);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+#taskInput {
+    border-radius: 15px;
+    border: none;
+    padding: 12px;
+    outline: none;
+    transition: 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+#taskInput:focus {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px #ffffff;
+}
+
+.addtask {
+    border-radius: 15px;
+    background: linear-gradient(45deg, #ff4ecd, #6c63ff);
+    color: white;
+    font-weight: bold;
+    border: none;
+    transition: 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.addtask:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+    transition: 0.3s ease;
+}
+
+.list-group-item {
+    border-radius: 15px !important;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    border: none;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.25s ease;
+    animation: popIn 0.3s ease;
+}
+
+.list-group-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    transition: 0.25s ease;
+    box-shadow: 0 0 25px rgba(255,255,255, 0.5);
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.btn-warning {
+    background: #00ff88;
+    border: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00ff88;
+    transition: 0.2s ease;
+}
+
+.btn-warning:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px #bdffe0;
+    transition: 0.2s ease;
+}
+
+.clear {
+    background: linear-gradient(45deg, #ff4d4d, #ff0066);
+    border: none;
+    color: white;
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: 0.3s ease;
+}
+
+.clear:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,0,0,0.6);
+    transition: 0.3s ease;
+}
+
