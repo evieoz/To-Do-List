@@ -1,88 +1,93 @@
-let tasks = []; //empty array to store tasks
-// add event listener to add task button
+let tasks = [];
+let completed = [];
+
+// ADD TASK
 document.getElementById("addTaskBtn").addEventListener("click", function () {
-  // get value from input field
   let taskInput = document.getElementById("taskInput").value;
-  // check if input is empty
+
   if (taskInput) {
-    // add new task to task array
-    tasks.push({ text: taskInput, completed: false });
-    // clear input field value
+    tasks.push(taskInput);
+    completed.push(false);
+
     document.getElementById("taskInput").value = "";
-    // update task list display
+
     displayTasks();
     updateCounter();
   }
 });
-// function to display tasks in html list
+
+// DISPLAY TASKS
 function displayTasks() {
-  // select our task list in html
   let taskList = document.getElementById("taskList");
-  // clear existing html list
   taskList.innerHTML = "";
-  // loop through each task in the array and create a list item for each
+
   tasks.forEach((task, index) => {
-    // create <li> element for each task in array
     let li = document.createElement("li");
 
-    // add styling
     li.classList.add(
       "list-group-item",
       "d-flex",
       "justify-content-between",
-      "align-items-center",
+      "align-items-center"
     );
 
-    // set completed style
-    if (task.completed) {
+    // completed style
+    if (completed[index]) {
       li.classList.add("completed");
     }
-// add task text and delete button to list item
-    li.innerHTML = `
-    <span onclick="toggleTask(${index})" style="cursor:pointer">
-        ${task.text}
-    </span>
-    <button class='btn btn-warning btn-sm' onclick='removeTask(${index})'>
-        🗑
-    </button>
-`;
 
-    // append new task list to html
+    li.innerHTML = `
+      <span onclick="toggleTask(${index})" style="cursor:pointer">
+        ${task}
+      </span>
+      <button class='btn btn-warning btn-sm' onclick='removeTask(${index})'>
+        🗑
+      </button>
+    `;
+
     taskList.appendChild(li);
   });
 }
 
-// remove task from array and update display
-function removeTask(index) {
-    tasks.splice(index, 1);
-    displayTasks();
-    updateCounter();
+// TOGGLE COMPLETED
+function toggleTask(index) {
+  completed[index] = !completed[index];
+  displayTasks();
+  updateCounter();
 }
-// clear all tasks from array and update display
+
+// REMOVE TASK
+function removeTask(index) {
+  tasks.splice(index, 1);
+  completed.splice(index, 1);
+
+  displayTasks();
+  updateCounter();
+}
+
+// CLEAR ALL TASKS
 document.getElementById("clearAllTasksBtn")
   .addEventListener("click", function () {
     tasks = [];
+    completed = [];
+
     displayTasks();
     updateCounter();
   });
-// allow user to press enter key to add task
+
+// ENTER KEY TO ADD TASK
 document.getElementById("taskInput")
   .addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       document.getElementById("addTaskBtn").click();
     }
   });
-// update task counter display
+
+// COUNTER
 function updateCounter() {
   document.getElementById("taskCounter").innerText =
     "Total Tasks: " + tasks.length;
 }
-// toggle task completion status
-function toggleTask(index) {
-    tasks[index].completed = !tasks[index].completed;
-    displayTasks();
-    updateCounter();
-}
 
-// finalize counter
+// INITIAL DISPLAY
 updateCounter();
