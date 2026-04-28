@@ -1,5 +1,5 @@
 let tasks = []; //empty array to store tasks
-
+// add event listener to add task button
 document.getElementById("addTaskBtn").addEventListener("click", function () {
   // get value from input field
   let taskInput = document.getElementById("taskInput").value;
@@ -14,7 +14,7 @@ document.getElementById("addTaskBtn").addEventListener("click", function () {
     updateCounter();
   }
 });
-
+// function to display tasks in html list
 function displayTasks() {
   // select our task list in html
   let taskList = document.getElementById("taskList");
@@ -37,7 +37,7 @@ function displayTasks() {
     if (task.completed) {
       li.classList.add("completed");
     }
-
+// add task text and delete button to list item
     li.innerHTML = `
     <span onclick="toggleTask(${index})" style="cursor:pointer">
         ${task.text}
@@ -52,37 +52,37 @@ function displayTasks() {
   });
 }
 
-// FIX #1 ADDED (missing function)
+// remove task from array and update display
 function removeTask(index) {
     tasks.splice(index, 1);
     displayTasks();
     updateCounter();
 }
-
+// clear all tasks from array and update display
 document.getElementById("clearAllTasksBtn")
   .addEventListener("click", function () {
     tasks = [];
     displayTasks();
     updateCounter();
   });
-
+// allow user to press enter key to add task
 document.getElementById("taskInput")
   .addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       document.getElementById("addTaskBtn").click();
     }
   });
-
+// update task counter display
 function updateCounter() {
   document.getElementById("taskCounter").innerText =
     "Total Tasks: " + tasks.length;
 }
-
+// toggle task completion status
 function toggleTask(index) {
     tasks[index].completed = !tasks[index].completed;
     displayTasks();
     updateCounter();
 }
 
-// initialize counter
+// finalize counter
 updateCounter();
