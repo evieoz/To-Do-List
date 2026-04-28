@@ -1,5 +1,7 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "playwrite-cc-de-grund", sans-serif;
+    font-weight: 700; 
+    font-style: normal;
     background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ade80, #60a5fa);
     background-size: 400% 400%;
     animation: gradientMove 12s ease infinite;
@@ -24,8 +26,10 @@ body {
 }
 
 .title {
+    font-family: "alasassy-caps", sans-serif; 
+    font-weight: 900; 
+    font-style: normal;
     font-size: 3rem;
-    font-weight: 800;
     color: white;
     text-shadow: 0 0 10px rgba(255,255,255,0.6);
     animation: pulse 2s infinite;
@@ -122,3 +126,15 @@ body {
     transition: 0.3s ease;
 }
 
+.logo {
+    width: 200px;
+    height: auto;
+    margin: 0;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+    color: red;
+}
